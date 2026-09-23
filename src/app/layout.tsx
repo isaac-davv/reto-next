@@ -1,29 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Navbar from "@/app/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Reto-Next",
-  description: "Actividad de reto para el curso de Next.js",
+  title: "Gym Plan App",
+  description: "Plan de gimnasio con Next.js y Supabase",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="es">
+      <body className="bg-neutral-900 text-neutral-100 min-h-screen">
+        <Navbar />
+        <main className="max-w-4xl mx-auto px-4 py-10">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
